@@ -4,23 +4,25 @@
  */
 const firstUniqCar = function (s) {
   for (let i = 0; i < s.length; i++) {
-    console.log("TOUR : " + i);
-    console.log("i : " + s[i]);
-
-    for (let j = i + 1; j <= s.length - 1; j++) {
-      console.log("j : " + s[j]);
-
-      if (s[j] === s[i]) {
+    let isUnique = true;
+    for (let j = 0; j < s.length; j++) {
+      if (i !== j && s[j] === s[i]) {
+        isUnique = false;
         break;
       }
     }
 
-    console.log("------------");
+    if (isUnique) {
+      console.log(i);
+      return i;
+    }
   }
+  console.log(-1);
+  return -1;
 };
 
 firstUniqCar("leetcode");
-// console.log("===================");
-// firstUniqCar("loveleetcode");
-// console.log("===================");
-// firstUniqCar("aabb");
+console.log("===================");
+firstUniqCar("loveleetcode");
+console.log("===================");
+firstUniqCar("aabb");
