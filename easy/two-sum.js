@@ -9,7 +9,7 @@
  * @param {number} target
  * @return {number[]}
  */
-const twoSum = function (nums, target) {
+var twoSum = function (nums, target) {
   for (let i = 0; i < nums.length; i++) {
     console.log("tour : " + i);
     console.log(nums[i]);
@@ -31,3 +31,18 @@ console.log("TEST 2");
 twoSum([3, 2, 4], 6);
 console.log("TEST 3");
 twoSum([[3, 3], 6]);
+
+// BEST SOLUTION
+
+var twoSum = function (nums, target) {
+  const numIndices = {};
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    const complement = target - num;
+    if (complement in numIndices) {
+      return [numIndices[complement], i];
+    }
+    numIndices[num] = i;
+  }
+  return null;
+};
