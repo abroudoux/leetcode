@@ -32,7 +32,7 @@ twoSum([3, 2, 4], 6);
 console.log("TEST 3");
 twoSum([[3, 3], 6]);
 
-// BEST SOLUTION
+// SOLUTION
 
 var twoSum = function (nums, target) {
   const numIndices = {};
