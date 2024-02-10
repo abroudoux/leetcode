@@ -22,54 +22,42 @@
  * @return {number}
  */
 var romanToInt = function (s) {
+  const romanToIntMap = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
+
+  const letterSuccessors = {
+    I: ["V", "X"],
+    V: [],
+    X: ["L", "C"],
+    L: [],
+    C: ["D", "M"],
+    D: [],
+    M: [],
+  };
+
+  let romans = s.split("");
+  let i = 0;
   let sum = 0;
-  const intergerMap = [
-    {
-      I: 1,
-    },
-    {
-      V: 5,
-    },
-    {
-      X: 10,
-    },
-    {
-      L: 50,
-    },
-    {
-      C: 100,
-    },
-    {
-      D: 500,
-    },
-    {
-      M: 1000,
-    },
-  ];
-  // console.log(intergerMap);
 
-  let n = s.split("");
-  // console.log(n);
-
-  for (let i = 0; i < n.length; i++) {
-    for (let j = 0; j < intergerMap.length; j++) {
-      let key = Object.keys(intergerMap[j]);
-      let value = parseInt(Object.values(intergerMap[j]));
-
-      if (n[i] == key) {
-        if (n[i + 1] > n[i]) {
-          console.log("ici");
-          let valueNext = parseInt(Object.values(intergerMap[j + 1]));
-          sum = valueNext - value;
-          console.log(sum);
-        } else {
-          sum = sum + value;
-          console.log("la");
-        }
-      }
+  while (i < romans.length) {
+    let roman = romans[i];
+    let nextRoman = romans[i + 1];
+    if (letterSuccessors[roman].includes(nextRoman)) {
+      sum += romanToIntMap[nextRoman] - romanToIntMap[roman];
+      i = i + 2;
+    } else {
+      sum += romanToIntMap[roman];
+      i++;
     }
   }
-  console.log(sum);
+  console.log("Result: " + sum);
 };
 
 console.log("TEST 1");
@@ -77,9 +65,6 @@ romanToInt("III");
 console.log("TEST 2");
 romanToInt("LVIII");
 console.log("TEST 3");
-romanToInt("MCMXCIV");
-
-console.log("TEST BONUS :");
-romanToInt("IV");
+romanToInt("MCMXCIV"); // expected 1994
 
 // SOLUTION
