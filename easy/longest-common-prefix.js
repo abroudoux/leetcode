@@ -9,19 +9,22 @@
  */
 var longestCommonPrefix = function (strs) {
   let commonPrefix = "";
-  let lastCharCommonPrefix = commonPrefix.slice(
-    commonPrefix.length - 1,
-    commonPrefix.length
-  );
   for (let i = 0; i < strs.length; i++) {
-    for (let j = 0; strs[i].slice(j, j + 1) !== lastCharCommonPrefix; j++) {
-      let char = strs[i].slice(j, j + 1);
+    let string = strs[i];
+
+    for (let j = 0; j < string.length; j++) {
+      char = string.slice(j, j + 1);
+      // console.log(char);
+
+      // if (!commonPrefix) {
+      //   commonPrefix = char;
+      // }
+
       commonPrefix = commonPrefix + char;
-      console.log(char);
+      console.log("common prefix letter : " + commonPrefix[j]);
     }
-    console.log("Tour : ", i);
   }
-  console.log(commonPrefix);
+  // console.log(commonPrefix);
 };
 
 console.log("TEST 1");
