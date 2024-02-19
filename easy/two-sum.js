@@ -33,7 +33,6 @@ console.log("TEST 3");
 twoSum([[3, 3], 6]);
 
 // SOLUTION
-
 var twoSum = function (nums, target) {
   const numIndices = {};
   for (let i = 0; i < nums.length; i++) {
