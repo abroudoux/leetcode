@@ -31,7 +31,6 @@ console.log("TEST 3");
 isPalindrome(10);
 
 // SOLUTION
-
 var isPalindrome = function (x) {
   return x.toString().split("").reverse().join("") == x;
 };
